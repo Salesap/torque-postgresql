@@ -55,6 +55,10 @@ module Torque
         end
 
         private
+          # redefine original method in order to skip statement cache
+          def find_target
+            self.scope.to_a
+          end
 
           # Returns the number of records in this collection, which basically
           # means count the number of entries in the +primary_key+
