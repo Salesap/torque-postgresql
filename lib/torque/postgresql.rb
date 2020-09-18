@@ -22,7 +22,7 @@ require 'torque/postgresql/attributes'
 require 'torque/postgresql/autosave_association'
 require 'torque/postgresql/auxiliary_statement'
 require 'torque/postgresql/base'
-require 'torque/postgresql/inheritance'
+# require 'torque/postgresql/inheritance' # disable because of strange sql lags
 require 'torque/postgresql/coder'
 require 'torque/postgresql/migration'
 require 'torque/postgresql/relation'
