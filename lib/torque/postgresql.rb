@@ -21,7 +21,7 @@ require 'torque/postgresql/attributes'
 require 'torque/postgresql/autosave_association'
 require 'torque/postgresql/auxiliary_statement'
 require 'torque/postgresql/base'
-require 'torque/postgresql/inheritance'
+# require 'torque/postgresql/inheritance' # disable because of strange sql lags
 require 'torque/postgresql/insert_all'
 require 'torque/postgresql/coder'
 require 'torque/postgresql/migration'
