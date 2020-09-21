@@ -18,7 +18,7 @@ module Torque
         end
 
         def quote_default_expression(value, column)
-          if value.class <= Array
+          if needs_array_quoting?(value, column)
             quote(value) + '::' + column.sql_type
           else
             super
@@ -37,6 +37,10 @@ module Torque
           def _type_cast(value)
             return super unless value.is_a?(Array)
             value.map(&method(:quote)).join(','.freeze)
+          end
+        
+          def needs_array_quoting?(value, column)
+            value.class <= Array && column.sql_type != 'jsonb'
           end
       end
     end
