@@ -21,6 +21,11 @@ module Torque
             super
             add_touch_callbacks(model, reflection)   if reflection.options[:touch]
             add_default_callbacks(model, reflection) if reflection.options[:default]
+
+            model.before_validation -> (o) do
+              value = o.try(reflection.foreign_key)
+              o.send("#{reflection.foreign_key}=", value.reject(&:blank?)) if value.present?
+            end
           end
 
           def self.define_readers(mixin, name)
