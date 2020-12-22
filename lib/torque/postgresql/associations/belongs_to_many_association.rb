@@ -29,6 +29,11 @@ module Torque
           owner.update_attribute(source_attr, ids)
         end
 
+        def writer(records)
+          records = Array(records).reject(&:blank?)
+          replace(records)
+        end
+
         def size
           if loaded?
             target.size
