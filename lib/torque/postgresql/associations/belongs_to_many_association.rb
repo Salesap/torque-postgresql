@@ -22,6 +22,7 @@ module Torque
 
         def ids_writer(ids)
           ids = ids.presence || column_default_value
+          ids = ids.reject(&:blank?).map(&:to_i).uniq if ids.present?
           owner.write_attribute(source_attr, ids)
           return unless owner.persisted? && owner.attribute_changed?(source_attr)
 
