@@ -30,6 +30,11 @@ module Torque
         def ids_reader
           owner[source_attr]
         end
+        
+        def writer(records)
+          records = Array(records).reject(&:blank?)
+          replace(records)
+        end
 
         def ids_writer(new_ids)
           column = source_attr
