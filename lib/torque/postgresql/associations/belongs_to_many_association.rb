@@ -33,6 +33,7 @@ module Torque
 
         def ids_writer(new_ids)
           column = source_attr
+          new_ids = new_ids.reject(&:blank?).map(&:to_i).uniq if new_ids.present?
           owner.update_column(column, owner[column] = new_ids.presence)
           @association_scope = nil
         end
