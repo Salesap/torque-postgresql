@@ -40,7 +40,7 @@ module Torque
             return super unless value.is_a?(Array)
             value.map(&method(:quote)).join(','.freeze)
           end
-        
+
           def needs_array_quoting?(value, column)
             value.class <= Array && column.sql_type != 'jsonb'
           end
