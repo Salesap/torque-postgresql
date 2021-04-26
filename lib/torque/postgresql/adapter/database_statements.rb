@@ -152,8 +152,7 @@ module Torque
           case default
             # Array elements
           when /\AARRAY\[(.*)\]\z/
-            # TODO: Improve this since it's not the most safe approach
-            eval(default.gsub(/ARRAY|::\w+(\[\])?/, ''))
+            '{}'
           else
             super
           end
