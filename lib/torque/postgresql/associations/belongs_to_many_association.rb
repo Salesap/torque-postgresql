@@ -234,7 +234,7 @@ module Torque
 
           def invertible_for?(record)
             inverse = inverse_reflection_for(record)
-            inverse && (inverse.has_many? && inverse.connected_through_array?)
+            inverse && (inverse.is_a?(ActiveRecord::Reflection::HasManyReflection) && inverse.connected_through_array?)
           end
 
           def stale_state
